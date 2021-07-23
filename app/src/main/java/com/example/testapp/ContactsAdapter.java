@@ -31,6 +31,12 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.Contac
         contacts.add("Asghar Karimi");
     }
 
+    public void addContact(String contactName)
+    {
+        contacts.add(0,contactName);
+        notifyItemInserted(0);
+    }
+
     @NonNull
     @Override
     public ContactsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
