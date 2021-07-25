@@ -31,9 +31,8 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.Contac
         contacts.add("Asghar Karimi");
     }
 
-    public void addContact(String contactName)
-    {
-        contacts.add(0,contactName);
+    public void addContact(String contactName) {
+        contacts.add(0, contactName);
         notifyItemInserted(0);
     }
 
@@ -68,5 +67,9 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.Contac
             tv_firstChar.setText(contactName.substring(0, 1).toUpperCase());
             tv_fullName.setText(contactName);
         }
+    }
+
+    public interface ItemEventListener {
+        void Onclick(int position, String contactName);
     }
 }

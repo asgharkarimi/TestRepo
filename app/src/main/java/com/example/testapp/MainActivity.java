@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private ContactsAdapter contactsAdapter;
     private EditText editTextContactname;
     private ImageView imageViewAddcontact;
+    private int editingItemPosition=-1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
