@@ -33,7 +33,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.Contac
         contacts.add("Asghar Karimi");
         contacts.add("Asghar Karimi");
         contacts.add("Asghar Karimi");
-        this.itemEventListener=itemEventListener;
+        this.itemEventListener = itemEventListener;
     }
 
     public void addContact(String contactName) {
@@ -68,13 +68,13 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.Contac
             tv_fullName = itemView.findViewById(R.id.textViewFullname);
         }
 
-        public void bindContact(String contactName) {
+        public void bindContact(final String contactName) {
             tv_firstChar.setText(contactName.substring(0, 1).toUpperCase());
             tv_fullName.setText(contactName);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.i(TAG, "onClick: "+getAdapterPosition());
+                    itemEventListener.Onclick(getAdapterPosition(), contactName);
                 }
             });
         }

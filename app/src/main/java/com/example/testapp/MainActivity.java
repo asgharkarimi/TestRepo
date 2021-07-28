@@ -5,11 +5,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ContactsAdapter.ItemEventListener {
+    private static final String TAG = "MainActivity";
     private RecyclerView recyclerViewContacts;
     private ContactsAdapter contactsAdapter;
     private EditText editTextContactname;
@@ -21,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         recyclerViewContacts = findViewById(R.id.tv_contacts);
-        contactsAdapter = new ContactsAdapter();
+        contactsAdapter = new ContactsAdapter(this);
         editTextContactname=findViewById(R.id.editTextContactname);
         imageViewAddcontact=findViewById(R.id.imageViewAddcontact);
 
@@ -36,5 +38,10 @@ public class MainActivity extends AppCompatActivity {
                 recyclerViewContacts.smoothScrollToPosition(0);
             }
         });
+    }
+
+    @Override
+    public void Onclick(int position, String contactName) {
+        Log.i(TAG, "Onclick: "+position);
     }
 }
