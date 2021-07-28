@@ -1,9 +1,11 @@
 package com.example.testapp;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,9 +13,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ContactsHolder> {
+    private static final String TAG = "ContactsAdapter";
     private ArrayList<String> contacts = new ArrayList<>();
+    private ItemEventListener itemEventListener;
 
-    public ContactsAdapter() {
+    public ContactsAdapter(ItemEventListener itemEventListener) {
         contacts.add("Asghar Karimi");
         contacts.add("Asghar Karimi");
         contacts.add("Asghar Karimi");
@@ -29,6 +33,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.Contac
         contacts.add("Asghar Karimi");
         contacts.add("Asghar Karimi");
         contacts.add("Asghar Karimi");
+        this.itemEventListener=itemEventListener;
     }
 
     public void addContact(String contactName) {
@@ -66,6 +71,12 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.Contac
         public void bindContact(String contactName) {
             tv_firstChar.setText(contactName.substring(0, 1).toUpperCase());
             tv_fullName.setText(contactName);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.i(TAG, "onClick: "+getAdapterPosition());
+                }
+            });
         }
     }
 
