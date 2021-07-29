@@ -41,6 +41,11 @@ public class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.Contac
         notifyItemInserted(0);
     }
 
+    public void updateContact(String contactName, int position) {
+        contacts.set(position, contactName);
+        notifyItemChanged(position);
+    }
+
     @NonNull
     @Override
     public ContactsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

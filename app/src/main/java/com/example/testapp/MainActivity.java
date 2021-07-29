@@ -34,8 +34,16 @@ public class MainActivity extends AppCompatActivity implements ContactsAdapter.I
         imageViewAddcontact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                contactsAdapter.addContact(editTextContactname.getText().toString());
-                recyclerViewContacts.smoothScrollToPosition(0);
+               if (editingItemPosition == -1)
+               {
+                   contactsAdapter.addContact(editTextContactname.getText().toString());
+                   recyclerViewContacts.smoothScrollToPosition(0);
+               }
+               else
+               {
+
+               }
+
             }
         });
     }
