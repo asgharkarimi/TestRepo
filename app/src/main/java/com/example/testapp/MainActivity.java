@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity implements ContactsAdapter.I
     private ContactsAdapter contactsAdapter;
     private EditText editTextContactname;
     private ImageView imageViewAddcontact;
-    private int editingItemPosition=-1;
+    private int editingItemPosition = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +24,8 @@ public class MainActivity extends AppCompatActivity implements ContactsAdapter.I
         setContentView(R.layout.activity_main);
         recyclerViewContacts = findViewById(R.id.tv_contacts);
         contactsAdapter = new ContactsAdapter(this);
-        editTextContactname=findViewById(R.id.editTextContactname);
-        imageViewAddcontact=findViewById(R.id.imageViewAddcontact);
+        editTextContactname = findViewById(R.id.editTextContactname);
+        imageViewAddcontact = findViewById(R.id.imageViewAddcontact);
 
 
         recyclerViewContacts.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
@@ -42,6 +42,8 @@ public class MainActivity extends AppCompatActivity implements ContactsAdapter.I
 
     @Override
     public void Onclick(int position, String contactName) {
-        Log.i(TAG, "Onclick: "+position);
+        editingItemPosition = position;
+        editTextContactname.setText(contactName);
+        imageViewAddcontact.setImageResource(R.drawable.ic_check_white_24dp);
     }
 }
