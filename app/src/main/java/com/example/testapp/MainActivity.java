@@ -34,15 +34,15 @@ public class MainActivity extends AppCompatActivity implements ContactsAdapter.I
         imageViewAddcontact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               if (editingItemPosition == -1)
-               {
-                   contactsAdapter.addContact(editTextContactname.getText().toString());
-                   recyclerViewContacts.smoothScrollToPosition(0);
-               }
-               else
-               {
+                if (editingItemPosition == -1) {
+                    contactsAdapter.addContact(editTextContactname.getText().toString());
+                    recyclerViewContacts.smoothScrollToPosition(0);
+                } else {
+                    contactsAdapter.updateContact(editTextContactname.getText().toString(), editingItemPosition);
+                    imageViewAddcontact.setImageResource(R.drawable.ic_add_white_24dp);
+                }
 
-               }
+                editTextContactname.setText("");
 
             }
         });
